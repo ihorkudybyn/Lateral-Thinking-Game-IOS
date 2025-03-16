@@ -28,7 +28,6 @@ struct PlayView: View {
                             BackButtonView(imageName: "backbutton")
                             
                         }
-                        .frame(width: .infinity, alignment: .leading)
                         
                         Spacer()
                         
@@ -38,9 +37,8 @@ struct PlayView: View {
                         
                         BackButtonView(imageName: "backbutton")
                     }
-                    
                     .padding(.horizontal, 20)
-                    .frame(width: .infinity, height: 70)
+                    .frame(height: 70)
                 }
                 
                 ScrollView(.vertical, showsIndicators: false) {
