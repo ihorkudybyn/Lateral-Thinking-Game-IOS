@@ -1,48 +1,33 @@
 import SwiftUI
 
-struct TestView: View {
+struct ScrollPositionModifier: View {
+    @State private var scrollViewPosition: Int? = 0
     var body: some View {
-        NavigationStack {
-            NavigationLink {
-                Text("Hello")
-            } label: {
-                RotatingActionButton(text: "Play", foregroundColor: .white)
+        VStack {
+            ScrollView {
+                ForEach(0..<100, id: \.self) { num in
+                    Rectangle()
+                        .fill(Color.green.opacity(0.5))
+                        .frame(height: 100)
+                        .cornerRadius(10)
+                        .padding()
+                        .overlay {
+                            Text(verbatim: num.formatted())
+                                .font(.system(size: 18,weight: .bold))
+                        }
+                }.scrollTargetLayout()
+            }.scrollPosition(id: $scrollViewPosition)
+            if scrollViewPosition ?? 0 > 0 {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.red.opacity(0.5))
+                    .frame(width: 100, height: 50)
             }
-        }
-    }
-}
-
-struct RotatingActionButton: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var rotationT = false
-    let text: String
-    let foregroundColor: Color
-
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                .fill(.secondary) // Use your desired color
-                .shadow(radius: 1)
-                .frame(maxWidth: 140, maxHeight: 65)
-            Text(text)
-                .foregroundStyle(foregroundColor)
-                .font(.system(size: 40, weight: .bold, design: .rounded))
-                .kerning(3)
-        }
-        .rotationEffect(.degrees(rotationT ? 360 : 0))
-        .onTapGesture {
-            withAnimation(.linear(duration: 1)) {
-                rotationT.toggle()
-            }
-        }
-        .navigationDestination(isPresented: $rotationT) {
             
-            Text("Hello")
         }
     }
 }
 
 
 #Preview {
-    TestView()
+    ScrollPositionModifier()
 }
