@@ -14,8 +14,8 @@ struct PlayView: View {
     @State var isDarkModeOn: Bool = false
     @State var isScrolling: Bool = false
     @State private var stories: [Story] = []
-    @State private var position: String = "67897f78de168b6aaca00aa1"
-
+    @State private var position: String? = "67897f78de168b6aaca00aa1"
+    
     
     var body: some View {
         NavigationView {
@@ -42,11 +42,9 @@ struct PlayView: View {
                 }
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack{
-                        ForEach(stories) { story in
-                            StoryView(story: story, isDarkModeOn: $isDarkModeOn)
-                        }.scrollTargetLayout()
-                    }
+                    ForEach(stories) { story in
+                        StoryView(story: story, isDarkModeOn: $isDarkModeOn)
+                    }.scrollTargetLayout()
                     .task {
                         do {
                             stories = try await loadStory()
@@ -61,18 +59,15 @@ struct PlayView: View {
                         }
                     }
                     .padding(.top, 3)
-                    
-                    
                 }
-//                .scrollPosition(id: $position)
+                .scrollPosition(id: $position)
                 .onScrollPhaseChange{ _, newPhase in
-                    withAnimation(.spring){
+                    withAnimation(.default){
                         switch newPhase {
                         case .idle:
-//                            if $position.id == "67897f78de168b6aaca00aa1" {
-//                                
-//                            }
-                            isScrolling = false
+                            if position == "67897f78de168b6aaca00aa1" {
+                                isScrolling = false
+                            }
                         default:
                             isScrolling = true
                         }
@@ -95,17 +90,17 @@ struct PlayView: View {
     }
     
     func loadStory() async throws -> [Story] {
-//        let endpoint = "http://localhost:8001/stories/"
-//        
-//        guard let url = URL(string: endpoint) else {
-//            throw SError.invalidURL
-//        }
-//        
-//        let (data, response) = try await URLSession.shared.data(from: url)
-//        
-//        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-//            throw SError.invalidResponse
-//        }
+        //        let endpoint = "http://localhost:8001/stories/"
+        //
+        //        guard let url = URL(string: endpoint) else {
+        //            throw SError.invalidURL
+        //        }
+        //
+        //        let (data, response) = try await URLSession.shared.data(from: url)
+        //
+        //        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+        //            throw SError.invalidResponse
+        //        }
         
         do {
             let decoder = JSONDecoder()
@@ -319,7 +314,7 @@ struct BackButtonView: View {
                 .scaledToFit()
                 .frame(maxHeight: 40)
         }
-            
+        
     }
 }
 
@@ -334,7 +329,7 @@ struct StoryView: View {
                 .foregroundStyle(.secondarymain)
                 .opacity(0.9)
                 .shadow(radius: 1)
-                
+            
             HStack(){
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(isDarkModeOn ? .black : .white )
@@ -348,8 +343,8 @@ struct StoryView: View {
                         .kerning(1)
                     Text(story.situation)
                         .font(.system(size: 15, weight: .medium, design: .rounded))
-                        
-                        
+                    
+                    
                 }
                 .multilineTextAlignment(.center)
                 .padding(.trailing, 20)
