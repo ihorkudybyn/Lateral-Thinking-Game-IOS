@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E65A2AAD2DDA847E0077A8E9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E65A2AAC2DDA847E0077A8E9 /* ConfettiSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E648FDEC2D653F6B00347737 /* Lateral Thinking Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lateral Thinking Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E65A2AAD2DDA847E0077A8E9 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "Lateral Thinking Game";
 			packageProductDependencies = (
+				E65A2AAC2DDA847E0077A8E9 /* ConfettiSwiftUI */,
 			);
 			productName = "Lateral Thinking Game";
 			productReference = E648FDEC2D653F6B00347737 /* Lateral Thinking Game.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = E648FDE32D653F6B00347737;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E65A2AAB2DDA847E0077A8E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E648FDED2D653F6B00347737 /* Products */;
 			projectDirPath = "";
@@ -251,15 +260,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Lateral Thinking Game/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Lateral Thinking Game\"";
 				DEVELOPMENT_TEAM = 8Q4U477W98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lateral-Thinking-Game-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lateral Thinking Game";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -288,15 +297,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Lateral Thinking Game/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Lateral Thinking Game\"";
 				DEVELOPMENT_TEAM = 8Q4U477W98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lateral-Thinking-Game-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lateral Thinking Game";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -340,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E65A2AAB2DDA847E0077A8E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E65A2AAC2DDA847E0077A8E9 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E65A2AAB2DDA847E0077A8E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E648FDE42D653F6B00347737 /* Project object */;
 }

@@ -5,7 +5,7 @@
 //  Created by Ihor Kudybyn on 03/03/2025.
 //
 
-
+import Foundation
 
 struct Story: Codable, Identifiable {
     let id: String
@@ -28,6 +28,31 @@ struct Session: Codable {
 
     enum CodingKeys: String, CodingKey {
         case sessionId = "session_id"
+    }
+}
+
+struct Chat: Codable {
+    var messages: [Message]
+    let hintsUsed: Int
+    let progressPercent: Double
+    let story: Story
+    
+    enum CodingKeys: String, CodingKey {
+        case messages
+        case hintsUsed = "hints_used"
+        case progressPercent = "progress_percent"
+        case story
+    }
+}
+
+struct Message: Codable, Hashable {
+    let id: UUID = UUID()
+    let role: String
+    let content: String
+    
+    enum CodingKeys: String, CodingKey {
+        case role
+        case content
     }
 }
 

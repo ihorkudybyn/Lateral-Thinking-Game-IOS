@@ -9,29 +9,38 @@ import SwiftUI
 
 struct MainBackgroundView: View {
     @State private var rotation: Double = 0.0
-    @State private var gridOffset: CGSize = CGSize(width: 283, height: 283)
+    @State private var gridOffset: CGSize = CGSize(width: 188, height: 188)
 
     var body: some View {
         Grid {
-            ForEach(0..<31) { _ in
+            ForEach(0..<25) { _ in
                 GridRow {
-                    ForEach(0..<21) { _ in
+                    ForEach(0..<16) { _ in
                         Image("brain")
                             .resizable()
                             .frame(width: 40, height: 40)
                             .rotationEffect(.degrees(rotation))
+                            .animation(
+                                .linear(duration: 8)
+                                    .repeatForever(autoreverses: false),
+                                value: rotation
+                            )
                     }
                 }
             }
         }
+        .offset(x: -95, y: -100)
         .offset(gridOffset)
+        .animation(
+            .linear(duration: 4)
+                .repeatForever(autoreverses: false),
+            value: gridOffset
+        )
         .onAppear {
-            withAnimation(Animation.linear(duration: 4).repeatForever(autoreverses: false)) {
-                gridOffset = CGSize(width: -100, height: -100)
-                rotation = 360
-            }
+            gridOffset = CGSize(width: -100, height: -100)
+            rotation   = 360
         }
         .drawingGroup()
-        .ignoresSafeArea()
+        .background(Color.maincolor)
     }
 }
