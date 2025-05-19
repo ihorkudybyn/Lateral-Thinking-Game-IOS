@@ -8,10 +8,9 @@
 import Foundation
 import SwiftUI
 
-/// ViewModel for the Lateral Thinking Game
 @MainActor
 class GameViewModel: ObservableObject {
-    // MARK: - Published Properties
+    
     @Published var userChat: Chat
     @Published var userMessage: String = ""
     @Published var isHintShown: Bool = false
@@ -20,16 +19,16 @@ class GameViewModel: ObservableObject {
     @Published var confettiTrigger: Int = 0
     private final var sURL: String = "http://localhost:8001"
     
-    // Session management
+    
     @Published private var sessionIDs: SessionIDs
     @Published private(set) var sessionID: String = ""
     private let storyID: String
     
-    // MARK: - Initialization
+    
     init(storyID: String, sessionIDs: SessionIDs = SessionIDs()) {
         self.storyID = storyID
         self.sessionIDs = sessionIDs
-        // Initialize with empty/default chat
+        
         self.userChat = Chat(
             messages: [],
             hintsUsed: 0,
@@ -41,7 +40,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Data Loading
+
     private func loadChat(_ sessionID: String) async throws -> Chat {
         let endpoint = "\(sURL)/conversation/get_chat_by_session/\(sessionID)"
         guard let url = URL(string: endpoint) else { throw SError.invalidURL }
@@ -61,7 +60,7 @@ class GameViewModel: ObservableObject {
         return session.sessionId
     }
     
-    // MARK: - Session and Chat Setup
+
     func loadCurrentSessionAndChat() async {
         do {
             if let existing = sessionIDs.contains(storyID) {

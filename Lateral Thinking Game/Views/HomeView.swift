@@ -14,7 +14,7 @@ struct HomeView: View {
     
     
     @State private var isDarkModeOn = false
-    @State private var settingsPresenter = true
+    @State private var settingsPresenter = false
     @State private var navigateToPlay = false
     
     @State private var goToPlay = false
