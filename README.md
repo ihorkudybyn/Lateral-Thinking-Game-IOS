@@ -32,7 +32,7 @@ The "Lateral Thinking Game" challenges users to solve puzzles through lateral th
 3. Configure the backend server URL in GameViewModel.swift and PlayView.swift
 4. Build and run the application
 
-### Backend Server
+### Backend Server(currently not available for setup)
 The app requires a backend server running on `http://localhost:8001` (default development URL). The server should provide:
 - Story listings (`/stories/`)
 - Conversation management (`/conversation/get_chat_by_session/`, `/conversation/send_user_message`, etc.)
